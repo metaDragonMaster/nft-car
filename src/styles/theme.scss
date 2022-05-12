@@ -1,0 +1,66 @@
+// 缺角按钮
+.theme-miss-angle-button {
+	display: inline-block;
+	padding: 8px 30px;
+	border: 3px solid #fff;
+	clip-path: polygon(
+		0 0,
+		100% 0,
+		100% calc(100% - 18px),
+		calc(100% - 14px) 100%,
+		0 100%
+	);
+	position: relative;
+	text-align: center;
+	// overflow: hidden;
+	&::after {
+		display: block;
+		content: "";
+		position: absolute;
+		bottom: calc(-100% + 12px);
+		right: 0;
+		height: 200%;
+		width: 3px;
+		background-color: #fff;
+		transform: rotateZ(37deg);
+	}
+}
+
+// 灰色透明背景
+.theme-bg-gary {
+	// border-radius: 8px;
+	background-color: rgba($color: #7d7d7d, $alpha: 0.32);
+	backdrop-filter: blur(4px);
+}
+.theme-gray-diamond-button {
+	@extend .theme-bg-gary;
+	padding: 10px 40px;
+	clip-path: polygon( 10% 0, 100% 0, 90% 100%, 0 100%);
+}
+// 镂空文字
+.theme-text-stroke {
+	color: transparent;
+	-webkit-text-stroke: 1px var(--stroke-color, #fff);
+	// text-shadow:
+	// 0 1px var(--stroke-color, #fff),
+	// 1px 0 var(--stroke-color, #fff),
+	// -1px 0 var(--stroke-color, #fff),
+	// 0 -1px var(--stroke-color, #fff);
+}
+
+$check-colors: (
+	"n": #d2d2d2,
+	"r": #4758e9,
+	"s": #e947e3,
+	"sr": #e9d947,
+	"ssr": #e94747,
+);
+
+@each $key, $value in $check-colors {
+	.theme-background-#{$key} {
+		background-color: $value;
+	}
+	.theme-color-#{$key} {
+		color: $value;
+	}
+}
